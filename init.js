@@ -22,8 +22,7 @@ Listing.insertMany([
     {
         name: "Reyanshi Semalty",
        age: "30",
-       image: "https://images.unsplash.com/photo-1517840545241-5215885b08ab",
-    
+       image: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7",
        phone: "+1-234-567-8902",
        location: "los angeles, ca",
        country: "usa",
@@ -31,7 +30,7 @@ Listing.insertMany([
     {
         name: "Shahid kapoor",
         age: "45",
-        image:  "https://images.unsplash.com/photo-1517840545241-5215885b08ab",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
         phone: "+1-234-567-8903",
         location: "chicago, il",
         country: "usa"
@@ -56,7 +55,7 @@ Listing.insertMany([
         name: "Daniel Jones",
         age: "31",
         image: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7",
-        phone: "+1-234-567-8905",
+        phone: "+1-234-567-8900",
         location: "phoenix, az",
         country: "usa"
     },
@@ -105,10 +104,11 @@ Listing.insertMany([
     {
         name: "Nisha Joshi",
         age: "24",
-        image: "https://images.unsplash.com/photo-1517840545241-5215885b08ab",
-        phone: "8433485008",
+        image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+        phone: "8433485000",
         location: "jaipur",
         country: "india"
     },
 
 ]);
+

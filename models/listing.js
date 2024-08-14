@@ -2,15 +2,15 @@ const mongoose= require("mongoose");
 const listingSchema= new mongoose.Schema({
   name:{
     type: String,
-
+    required: true,
   },
   age:{
-    type: Number,
-    
+    type: String,
+    required: true,
   },
   phone:{
     type: Number,
-    
+    required: true,
   },
   image:{
     type: String,
@@ -20,11 +20,12 @@ const listingSchema= new mongoose.Schema({
   },
   location:{
     type: String,
+    required: true
     
   },
   country:{
     type: String,
-  
+  required: true,
   },
 });
 

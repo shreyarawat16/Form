@@ -9,12 +9,12 @@ app.use(methodOverride("_method"));
 const ExpressErr= require("./utils/ExpressErr.js");
 const {listingSchema}= require("./schema.js");
 const ejsMate= require("ejs-mate"); // helps to create templates
+const PORT= process.env.PORT || 8080;
 app.engine("ejs", ejsMate);
 app.set("viewengine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public/css")));
 app.use(express.static(path.join(__dirname, "/public/js")));
-app.use(express.static(path.join(__dirname, "public"))); 
 app.use(express.urlencoded({extended: true}));
 main().then( ()=>{
     console.log("connected to DB");
@@ -23,7 +23,7 @@ main().then( ()=>{
     console.log(err);
 } );
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/form');
+  await mongoose.connect("mongodb://127.0.0.1:27017/form");
 }
 app.get("/", (req, res)=>{
     res.send("Hi, I am root");
@@ -107,20 +107,20 @@ app.put("/listings/:id", validateListing, wrapAsync(async (req, res)=>{
    res.redirect("/listings");
 }))
 
+//SHOW ROUTE
+app.get("/listings/:id", wrapAsync(async(req, res)=>{
+    let {id}= req.params;
+    const listing= await Listing.findById(id);
+    res.render("./listings/show.ejs", {listing});
+ }))
+
 //DELETE ROUTE
-app.delete("/listings/:id", validateListing, wrapAsync(async(req, res)=>{
+app.delete("/listings/:id", wrapAsync(async(req, res)=>{
    let {id}= req.params;
   let deleted= await Listing.findByIdAndDelete(id);
   console.log(deleted); 
   res.redirect("/listings");
-}))
-
-//SHOW ROUTE
-app.get("/listings/:id", wrapAsync(async(req, res)=>{
-   let {id}= req.params;
-   const listing= await Listing.findById(id);
-   res.render("./listings/show.ejs", {listing});
-}))
+}));
 
 //for the routes that doesn't exist
 //if the route doesn't get matched with any of the above paths, then it will come in this
@@ -135,6 +135,6 @@ app.use((err, req, res, next)=>{
     // res.status(status).send(message);
     
 });
-app.listen(8080, ()=>{
+app.listen(PORT, ()=>{
     console.log("server is listening to port 8080");
 });
