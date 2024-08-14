@@ -16,6 +16,7 @@ app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public/css")));
 app.use(express.static(path.join(__dirname, "/public/js")));
 app.use(express.urlencoded({extended: true}));
+const dbURL= process.env.ATLASDB_URL;
 main().then( ()=>{
     console.log("connected to DB");
 })
@@ -23,11 +24,9 @@ main().then( ()=>{
     console.log(err);
 } );
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/form");
+  await mongoose.connect(dbURL);
 }
-app.get("/", (req, res)=>{
-    res.send("Hi, I am root");
-});
+
 
 const validateListing= (req, res, next)=>{
     let {error}= listingSchema.validate(req.body);
