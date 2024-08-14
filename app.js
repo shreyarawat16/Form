@@ -10,6 +10,7 @@ const ExpressErr= require("./utils/ExpressErr.js");
 const {listingSchema}= require("./schema.js");
 const ejsMate= require("ejs-mate"); // helps to create templates
 const PORT= process.env.PORT || 8080;
+const dbURL= process.env.ATLASDB_URL;
 app.engine("ejs", ejsMate);
 app.set("viewengine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -23,7 +24,7 @@ main().then( ()=>{
     console.log(err);
 } );
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/form");
+  await mongoose.connect(dbURL);
 }
 
 
