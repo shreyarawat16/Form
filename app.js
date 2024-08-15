@@ -10,6 +10,7 @@ const ExpressErr= require("./utils/ExpressErr.js");
 const {listingSchema}= require("./schema.js");
 const ejsMate= require("ejs-mate"); // helps to create templates
 const PORT= process.env.PORT || 8080;
+const dbURL= process.env.ATLASDB_URL;
 app.engine("ejs", ejsMate);
 app.set("viewengine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
