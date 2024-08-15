@@ -6,7 +6,7 @@
         <div class="col-8 offset-2">
         
             <h2> Create a new Form </h2>
-    <form method="POST" action="/listings" class="needs-validation" novalidate>
+    <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">Enter Name</label>
             <!-- listing is an  object and title is its key-->  
@@ -21,6 +21,12 @@
         <input required class="form-control" name="listing[age]" placeholder="Enter your age" type="number"> 
         <div class="invalid-feedback">Please enter a correct age!</div>  
         </div>
+           <div class="mb-3">
+            <label for="image" class="form-label">Upload image</label>
+            <input required class="form-control"  name="listing[image]" type="string"> 
+           <div class="invalid-feedback">PLease upload a valid image</div>
+           <div class="valid-feedback">Image looks good!</div>
+           </div>
 
         <div class="mb-3">
          <label for="phone" class="form-label">Enter phone no.</label>
